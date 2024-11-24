@@ -1,0 +1,19 @@
+{
+  "name": "advanced-oop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LHSang6403/advanced-oop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LHSang6403/advanced-oop/issues"
+  },
+  "homepage": "https://github.com/LHSang6403/advanced-oop#readme"
+}
