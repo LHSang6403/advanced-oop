@@ -13,12 +13,13 @@ framework.addRule(
   "email",
   new RegexValidationRule(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
 );
+framework.addRule("email", new RequiredFieldRule());
 
 framework.setDisplayStrategy(new ConsoleDisplayStrategy());
 
 const data = {
   username: "sang le",
-  email: "invalid@gmail.com",
+  email: "",
 };
 
 const result = framework.validate(data);
