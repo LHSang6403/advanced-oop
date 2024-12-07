@@ -1,14 +1,14 @@
 const ValidationRule = require("./ValidationRule").ValidationRule;
 
 class RegexValidationRule extends ValidationRule {
-    constructor(regex, message = "Invalid format") {
-      super(message);
-      this.regex = regex;
-    }
-  
-    validate(value) {
-      return this.regex.test(value);
-    }
+  constructor(regex, message = "Invalid format") {
+    super(message);
+    this.regex = regex;
   }
 
-  module.exports.RegexValidationRule = RegexValidationRule;
+  validate(value) {
+    return this.regex.test(value);
+  }
+}
+
+module.exports.RegexValidationRule = RegexValidationRule;
