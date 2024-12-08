@@ -1,4 +1,4 @@
-const ValidationRule = require("../ValidationRule").CustomValidationRule;
+const ValidationRule = require("./ValidationRule").ValidationRule;
 
 class CustomValidationRule extends ValidationRule {
   constructor(callback, message = "Validation failed") {

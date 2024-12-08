@@ -1,11 +1,12 @@
 class DOMDisplayStrategy {
   display(errors) {
-    const errorContainer = document.getElementById("validation-errors");
-    if (errorContainer) {
-      errorContainer.innerHTML = errors
-        .map((error) => `<p>${error}</p>`)
-        .join("");
+    if (!errors.length) {
+      console.log("There is no error.");
+      return;
     }
+    console.log(errors);
+    console.log(errors
+      .map((error) => `<p>${error}</p>`));
   }
 }
 
