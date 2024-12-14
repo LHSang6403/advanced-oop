@@ -1,7 +1,7 @@
 {
-  "name": "advanced-oop",
-  "version": "1.0.0",
-  "description": "",
+  "name": "nodejs-validator-framework",
+  "version": "1.1.0",
+  "description": "A validation framework built with JavaScript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/LHSang6403/advanced-oop.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "validation",
+    "framework",
+    "JavaScript"
+  ],
+  "author": "Sang Le",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/LHSang6403/advanced-oop/issues"
   },
