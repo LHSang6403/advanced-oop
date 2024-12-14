@@ -8,7 +8,7 @@ class ValidationRule {
   }
 
   getMessage() {
-    return this.message;
+    return this.errors?.length > 0 ? this.errors : this.message;
   }
 }
 

@@ -13,14 +13,14 @@ class CompositeValidationRule extends ValidationRule {
   validate(value) {
     let isValid = true;
     this.errors = [];
-
+  
     for (const rule of this.rules) {
       if (!rule.validate(value)) {
         isValid = false;
         this.errors.push(rule.getMessage());
       }
     }
-    return isValid;
+      return isValid;
   }
 
   getMessages() {
