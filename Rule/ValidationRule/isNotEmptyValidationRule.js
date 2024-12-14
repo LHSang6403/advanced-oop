@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class IsNotEmptyValidator extends ValidationRule {
   constructor(message = "Value is empty") {

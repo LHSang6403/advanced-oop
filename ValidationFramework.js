@@ -26,7 +26,6 @@ class ValidationFramework {
         const fieldValidation = this.validators[fieldName];
         const value = object[fieldName];
         const fieldResult = fieldValidation.validate(value);
-
         if (!fieldResult.isSuccess()) {
           result.isValid = false;
           result.errors.push(...fieldResult.errors);

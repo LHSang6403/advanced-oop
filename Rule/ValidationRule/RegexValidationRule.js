@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class RegexValidationRule extends ValidationRule {
   constructor(regex, message = "Invalid format") {

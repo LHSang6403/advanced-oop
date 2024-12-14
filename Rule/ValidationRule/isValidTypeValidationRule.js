@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class IsValidTypeValidator extends ValidationRule {
   constructor(type, message = "Invalid type") {

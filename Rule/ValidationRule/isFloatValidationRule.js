@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class IsFloatValidator extends ValidationRule {
   constructor(message = "Value is not a float") {

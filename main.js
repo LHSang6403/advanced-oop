@@ -1,33 +1,43 @@
-const DOMDisplayStrategy      = require("./DisplayStrategy/DOMDisplayStrategy").DOMDisplayStrategy;
-const ValidationFramework     = require("./ValidationFramework").ValidationFramework;
-const RequiredFieldRule       = require("./Rule/RequiredFieldRule").RequiredFieldRule;
-const RegexValidationRule     = require("./Rule/RegexValidationRule").RegexValidationRule;
-const ConsoleDisplayStrategy  = require("./DisplayStrategy/ConsoleDisplayStrategy").ConsoleDisplayStrategy;
-const CustomValidationRule    = require("./Rule/CustomValidationRule").CustomValidationRule;
+const ValidationFramework = require('./ValidationFramework').ValidationFramework;
+const RequiredFieldRule = require('./Rule/ValidationRule/RequiredFieldRule').RequiredFieldRule;
+const RegexValidationRule = require('./Rule/ValidationRule/RegexValidationRule').RegexValidationRule;
+const CompositeValidationRule = require('./Rule/Composite/CompositeValidationRule').CompositeValidationRule;
+const ValidationRuleBuilder = require('./Rule/Builder/ValidationRuleBuilder').ValidationRuleBuilder;
+const ConsoleDisplayStrategy = require('./DisplayStrategy/ConsoleDisplayStrategy').ConsoleDisplayStrategy;
+const DOMDisplayStrategy = require('./DisplayStrategy/DOMDisplayStrategy').DOMDisplayStrategy;
+const ConsoleSubscriber = require('./Observer/ConsoleSubscriber').ConsoleSubscriber;
+const DOMSubscriber = require('./Observer/DOMSubscriber').DOMSubscriber;
+const ValidationObserver = require('./Observer/ValidationObserver').ValidationObserver;
 
 const framework = ValidationFramework.getInstance();
 
-framework.addRule("username", new RequiredFieldRule());
-framework.addRule(
-  "email",
-  new RegexValidationRule(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+const usernameValidation = new CompositeValidationRule();
+usernameValidation.addRule(new RequiredFieldRule("Username is required"));
+usernameValidation.addRule(
+  new RegexValidationRule(/^[a-zA-Z0-9_]+$/, "Username must be alphanumeric")
 );
-framework.addRule("email", new RequiredFieldRule());
-framework.addRule(
-    "age",
-    new CustomValidationRule(
-      (value) => value >= 10 && value <= 100,
-      "Age must be between 10 and 100"
-    )
-  );
 
-framework.setDisplayStrategy(new ConsoleDisplayStrategy());
-framework.setDisplayStrategy(new DOMDisplayStrategy());
+const passwordValidation = new ValidationRuleBuilder()
+  .addRequired("Password is required")
+  .addMinLength(8, "Password must be at least 8 characters long")
+  .addRegex(/[A-Z]/, "Password must have at least one uppercase letter")
+  .addRegex(/\d/, "Password must have at least one digit")
+  .build();
+
+framework.addRule('username', usernameValidation);
+framework.addRule('password', passwordValidation);
+
+const observer = new ValidationObserver();
+observer.subscribe(new ConsoleSubscriber());
+observer.subscribe(new DOMSubscriber());
+
+framework.setDisplayStrategy({
+  display: (errors) => observer.notify(errors),
+});
 
 const data = {
-  username: "sang le",
-  email: "",
-  age: 120,
+  username: "", // Không hợp lệ
+  password: "", // Không hợp lệ
 };
 
 const result = framework.validate(data);

@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class MaxLengthValidator extends ValidationRule {
   constructor(maxLength, message = "Exceeded maximum length") {

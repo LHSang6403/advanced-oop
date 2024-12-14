@@ -1,4 +1,4 @@
-const ValidationRule = require("./ValidationRule").ValidationRule;
+const ValidationRule = require("../ValidationRule").ValidationRule;
 
 class IsValidLengthValidator extends ValidationRule {
   constructor(minLength, maxLength, message = "Invalid length") {
