@@ -64,7 +64,7 @@ const ValidationObserver =
 const ValidationResult =
   require("./ValidationResult/ValidationResult").ValidationResult;
 
-// Export everything for the user
+// Export for the user
 module.exports = {
   ValidationFramework,
   FieldValidation,
