@@ -52,10 +52,6 @@ const {
   const minLengthValidation = new MinLengthValidationRule();
   const regexValidation = new RegexValidationRule(/^[a-zA-Z0-9_]+$/, "Username must be alphanumeric");
   const requiredFieldValidation = new RequiredFieldRule();
-
-  const ValidationRuleDecoratorValidation = new ValidationRuleDecorator();
-  const minLengthDecoratorValidation = new MinLengthDecorator(ValidationRuleDecoratorValidation, 20);
-  
   const customValidation = new CustomValidationRule((value) => value === "hello", "Value must be 'hello'");
 
   framework.addRule("password", passwordValidation);
@@ -74,16 +70,15 @@ const {
   framework.addRule('minLength', minLengthValidation);
   framework.addRule('regex', regexValidation);
   framework.addRule('requiredField', requiredFieldValidation);
-  // framework.addRule('minLengthDecorator', minLengthDecoratorValidation);
-  
+
   const observer = new ValidationObserver();
   observer.subscribe(new ConsoleSubscriber());
   observer.subscribe(new DOMSubscriber());
-
+  
   framework.setDisplayStrategy({
     display: (errors) => observer.notify(errors),
   });
-
+  
   const data = {
     username: "sang le",
     password: "Sang1234",
@@ -102,7 +97,8 @@ const {
     minLength: "hello",
     regex: "hello",
     requiredField: "hello",
-    minLengthDecorator: "hello",
+    minLengthDecorator: "hellfgds",
+    compositeValidation: "hello",
   };
   
   const result = framework.validate(data);
@@ -112,3 +108,19 @@ const {
   } else {
     console.log("Validation succeeded!");
   }
+
+  const passwordValidationComposite = new PasswordValidationRule();
+  const compositeValidation = new CompositeValidationRule();
+
+  compositeValidation.addRule(passwordValidationComposite);
+  compositeValidation.addRule(passwordValidation);
+  compositeValidation.addRule(stringValidation);
+  compositeValidation.addRule(customValidation);
+  compositeValidation.addRule(doubleValidation);
+  compositeValidation.addRule(floatValidation);
+
+  compositeValidation.validate("TestCompositeValue");
+  console.log("Composite validation result:", compositeValidation.getMessages());
+
+  const minLengthDecoratorValidation = new MinLengthDecorator(floatValidation, 20);
+  console.log('Decorator validation result:', minLengthDecoratorValidation.validate("TestMinLengthDecoratorValue"));
