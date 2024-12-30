@@ -13,7 +13,7 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-var Subscriber = require('./Subscriber').Subscriber;
+var Subscriber = require("./Subscriber").Subscriber;
 var DOMSubscriber = /*#__PURE__*/function (_Subscriber) {
   function DOMSubscriber() {
     _classCallCheck(this, DOMSubscriber);
@@ -24,9 +24,11 @@ var DOMSubscriber = /*#__PURE__*/function (_Subscriber) {
     key: "update",
     value: function update(errors) {
       console.log("".concat(this.name, ": Validation Errors:"));
+      console.log("<div>");
       errors.forEach(function (error) {
-        return console.log("- ".concat(error));
+        return console.log(" <span>".concat(error, "</span>"));
       });
+      console.log("</div>");
     }
   }]);
 }(Subscriber);

@@ -1,4 +1,4 @@
-const Subscriber = require('./Subscriber').Subscriber;
+const Subscriber = require("./Subscriber").Subscriber;
 
 class DOMSubscriber extends Subscriber {
   constructor() {
@@ -7,7 +7,9 @@ class DOMSubscriber extends Subscriber {
 
   update(errors) {
     console.log(`${this.name}: Validation Errors:`);
-    errors.forEach((error) => console.log(`- ${error}`));
+    console.log("<div>");
+    errors.forEach((error) => console.log(` <span>${error}</span>`));
+    console.log("</div>");
   }
 }
 
