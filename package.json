@@ -1,6 +1,6 @@
 {
   "name": "nodejs-validator-framework",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A validation framework built with JavaScript",
   "main": "build/index.js",
   "files": [
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/LHSang6403/advanced-oop#readme",
   "dependencies": {
-    "nodejs-validator-framework": "^1.2.6"
+    "nodejs-validator-framework": "^1.2.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",

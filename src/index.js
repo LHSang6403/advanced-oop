@@ -17,25 +17,25 @@ const ValidationRuleDecorator =
 const CustomValidationRule =
   require("./Rule/ValidationRule/CustomValidationRule").CustomValidationRule;
 const IsDoubleValidator =
-  require("./Rule/ValidationRule/IsDoubleValidator").IsDoubleValidator;
+  require("./Rule/ValidationRule/isDoubleValidationRule").IsDoubleValidator;
 const IsFloatValidator =
-  require("./Rule/ValidationRule/IsFloatValidator").IsFloatValidator;
+  require("./Rule/ValidationRule/isFloatValidationRule").IsFloatValidator;
 const IsIntValidator =
-  require("./Rule/ValidationRule/IsIntValidator").IsIntValidator;
+  require("./Rule/ValidationRule/isIntValidationRule").IsIntValidator;
 const IsNotEmptyValidator =
-  require("./Rule/ValidationRule/IsNotEmptyValidator").IsNotEmptyValidator;
+  require("./Rule/ValidationRule/isNotEmptyValidationRule").IsNotEmptyValidator;
 const IsNotNullValidator =
-  require("./Rule/ValidationRule/IsNotNullValidator").IsNotNullValidator;
+  require("./Rule/ValidationRule/isNotNullValidationRule").IsNotNullValidator;
 const IsNumberValidator =
-  require("./Rule/ValidationRule/IsNumberValidator").IsNumberValidator;
+  require("./Rule/ValidationRule/isNumberValidationRule").IsNumberValidator;
 const IsStringValidation =
-  require("./Rule/ValidationRule/IsStringValidation").IsStringValidation;
+  require("./Rule/ValidationRule/isStringValidationRule").IsStringValidation;
 const IsValidLengthValidator =
-  require("./Rule/ValidationRule/IsValidLengthValidator").IsValidLengthValidator;
+  require("./Rule/ValidationRule/isValidLengthValidationRule").IsValidLengthValidator;
 const IsValidTypeValidator =
-  require("./Rule/ValidationRule/IsValidTypeValidator").IsValidTypeValidator;
+  require("./Rule/ValidationRule/isValidTypeValidationRule").IsValidTypeValidator;
 const MaxLengthValidator =
-  require("./Rule/ValidationRule/MaxLengthValidator").MaxLengthValidator;
+  require("./Rule/ValidationRule/MaxLengthValidationRule").MaxLengthValidator;
 const MaxValueValidationRule =
   require("./Rule/ValidationRule/MaxValueValidationRule").MaxValueValidationRule;
 const MinLengthValidationRule =
