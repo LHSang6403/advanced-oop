@@ -122,5 +122,5 @@ const {
   compositeValidation.validate("TestCompositeValue");
   console.log("Composite validation result:", compositeValidation.getMessages());
 
-  const minLengthDecoratorValidation = new MinLengthDecorator(floatValidation, 20);
-  console.log('Decorator validation result:', minLengthDecoratorValidation.validate("TestMinLengthDecoratorValue"));
+  const minLengthDecoratorValidation = new MinLengthDecorator(floatValidation, 20, "Value must be at least 20 characters long");
+  console.log('Decorator validation result:', minLengthDecoratorValidation.validate("TestMinLengt"));

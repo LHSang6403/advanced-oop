@@ -1,3 +1,5 @@
+//const { MinLengthDecorator } = require('nodejs-validator-framework');
+
 const ValidationFramework = require('./Validator/ValidationFramework').ValidationFramework;
 const RequiredFieldRule = require('./Rule/ValidationRule/RequiredFieldRule').RequiredFieldRule;
 const RegexValidationRule = require('./Rule/ValidationRule/RegexValidationRule').RegexValidationRule;
@@ -10,6 +12,7 @@ const DOMSubscriber = require('./Observer/DOMSubscriber').DOMSubscriber;
 const ValidationObserver = require('./Observer/ValidationObserver').ValidationObserver;
 const isStringValidationRule = require('./Rule/ValidationRule/isStringValidationRule').IsStringValidation;
 const CustomValidationRule = require('./Rule/ValidationRule/CustomValidationRule').CustomValidationRule;
+const MinLengthDecorator = require('./Rule/Decorator/MinLengthDecorator').MinLengthDecorator;
 
 const framework = ValidationFramework.getInstance();
 
@@ -51,6 +54,7 @@ const data = {
   custom: "hello1" 
 };
 
+
 const result = framework.validate(data);
 
 if (!result.isSuccess()) {
@@ -58,3 +62,6 @@ if (!result.isSuccess()) {
 } else {
   console.log("Validation succeeded!");
 }
+
+const minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule("Username is required"), 5, "Username must be at least 5 characters long");
+console.log(minLengthDecorator.validate("1234"));

@@ -7,7 +7,11 @@ class MinLengthDecorator extends ValidationRuleDecorator {
     }
   
     additionalValidation(value) {
-      return value.length >= this.minLength;
+      return (value.length >= this.minLength)? true : this.message;
+    }
+
+    getMessage() {
+      return this.message;
     }
   }
 
