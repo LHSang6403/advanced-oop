@@ -53,6 +53,7 @@ const {
   const regexValidation = new RegexValidationRule(/^[a-zA-Z0-9_]+$/, "Username must be alphanumeric");
   const requiredFieldValidation = new RequiredFieldRule();
   const customValidation = new CustomValidationRule((value) => value === "hello", "Value must be 'hello'");
+  const minLengthDecoratorValidation = new MinLengthDecorator(floatValidation, 20, "Value must be at least 20 characters long");
 
   framework.addRule("password", passwordValidation);
   framework.addRule('isString', stringValidation);
@@ -70,6 +71,7 @@ const {
   framework.addRule('minLength', minLengthValidation);
   framework.addRule('regex', regexValidation);
   framework.addRule('requiredField', requiredFieldValidation);
+  framework.addRule('minLengthDecorator', minLengthDecoratorValidation);
 
   const observer = new ValidationObserver();
   observer.subscribe(new ConsoleSubscriber());
@@ -99,6 +101,7 @@ const {
     requiredField: "hello",
     minLengthDecorator: "hellfgds",
     compositeValidation: "hello",
+    minLengthDecoratorValidation: "hello",
   };
   
   const result = framework.validate(data);
@@ -122,5 +125,3 @@ const {
   compositeValidation.validate("TestCompositeValue");
   console.log("Composite validation result:", compositeValidation.getMessages());
 
-  const minLengthDecoratorValidation = new MinLengthDecorator(floatValidation, 20, "Value must be at least 20 characters long");
-  console.log('Decorator validation result:', minLengthDecoratorValidation.validate("TestMinLengt"));
