@@ -20,7 +20,6 @@ var ValidationRuleDecorator = /*#__PURE__*/function (_ValidationRule) {
     _classCallCheck(this, ValidationRuleDecorator);
     _this = _callSuper(this, ValidationRuleDecorator, [message]);
     _this.rule = rule;
-    _this.message = message;
     return _this;
   }
   _inherits(ValidationRuleDecorator, _ValidationRule);

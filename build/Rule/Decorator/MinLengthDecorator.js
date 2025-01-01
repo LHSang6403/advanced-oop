@@ -27,7 +27,7 @@ var MinLengthDecorator = /*#__PURE__*/function (_ValidationRuleDecora) {
   return _createClass(MinLengthDecorator, [{
     key: "additionalValidation",
     value: function additionalValidation(value) {
-      return value.length >= this.minLength ? true : this.message;
+      return value.length >= this.minLength;
     }
   }, {
     key: "getMessage",

@@ -24,7 +24,7 @@ var RequiredFieldRule = /*#__PURE__*/function (_ValidationRule) {
   return _createClass(RequiredFieldRule, [{
     key: "validate",
     value: function validate(value) {
-      return value !== null && value !== undefined && value.trim() !== "";
+      return !value || value !== null && value !== undefined && value.trim() !== "";
     }
   }, {
     key: "getMessage",

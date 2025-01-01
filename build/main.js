@@ -24,10 +24,12 @@ var isStringValidation = new isStringValidationRule();
 var customValidation = new CustomValidationRule(function (value) {
   return value === "hello";
 }, "Value must be 'hello'");
+var minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule(), 5);
 framework.addRule('username', usernameValidation);
 framework.addRule('password', passwordValidation);
 framework.addRule('isString', isStringValidation);
 framework.addRule('custom', customValidation);
+framework.addRule('minLengthDecorator', minLengthDecorator);
 var observer = new ValidationObserver();
 observer.subscribe(new ConsoleSubscriber());
 observer.subscribe(new DOMSubscriber());
@@ -43,7 +45,9 @@ var data = {
   // Không hợp lệ
   isString: 123,
   // Không hợp lệ
-  custom: "hello1"
+  custom: "hello1",
+  // Không hợp lệ
+  minLengthDecorator: "abcde" // Không hợp lệ
 };
 var result = framework.validate(data);
 if (!result.isSuccess()) {
@@ -51,5 +55,3 @@ if (!result.isSuccess()) {
 } else {
   console.log("Validation succeeded!");
 }
-var minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule("Username is required"), 5, "Username must be at least 5 characters long");
-console.log(minLengthDecorator.validate("1234"));
