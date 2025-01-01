@@ -3,8 +3,7 @@ const ValidationRule = require("../ValidationRule").ValidationRule;
 class ValidationRuleDecorator extends ValidationRule {
     constructor(rule, message) {
       super(message);
-      this.rule = rule
-      this.message = message;
+      this.rule = rule;
     }
   
     validate(value) {

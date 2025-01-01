@@ -6,7 +6,7 @@ class RequiredFieldRule extends ValidationRule {
   }
 
   validate(value) {
-    return value !== null && value !== undefined && value.trim() !== "";
+    return !value || (value !== null && value !== undefined && value.trim() !== "");
   }
 
   getMessage() {

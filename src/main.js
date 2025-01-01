@@ -32,12 +32,13 @@ const passwordValidation = new ValidationRuleBuilder()
 const isStringValidation = new isStringValidationRule();
 
 const customValidation = new CustomValidationRule((value) => value === "hello", "Value must be 'hello'");
-
+const minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule(), 5);
 
 framework.addRule('username', usernameValidation);
 framework.addRule('password', passwordValidation);
 framework.addRule('isString', isStringValidation);
 framework.addRule('custom', customValidation);
+framework.addRule('minLengthDecorator', minLengthDecorator);
 
 const observer = new ValidationObserver();
 observer.subscribe(new ConsoleSubscriber());
@@ -51,7 +52,8 @@ const data = {
   username: "", // Không hợp lệ
   password: "", // Không hợp lệ
   isString: 123, // Không hợp lệ
-  custom: "hello1" 
+  custom: "hello1", // Không hợp lệ
+  minLengthDecorator: "abcde", // Không hợp lệ
 };
 
 
@@ -62,6 +64,3 @@ if (!result.isSuccess()) {
 } else {
   console.log("Validation succeeded!");
 }
-
-const minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule("Username is required"), 5, "Username must be at least 5 characters long");
-console.log(minLengthDecorator.validate("1234"));
