@@ -27,7 +27,12 @@ var MinLengthDecorator = /*#__PURE__*/function (_ValidationRuleDecora) {
   return _createClass(MinLengthDecorator, [{
     key: "additionalValidation",
     value: function additionalValidation(value) {
-      return value.length >= this.minLength;
+      return value.length >= this.minLength ? true : this.message;
+    }
+  }, {
+    key: "getMessage",
+    value: function getMessage() {
+      return this.message;
     }
   }]);
 }(ValidationRuleDecorator);

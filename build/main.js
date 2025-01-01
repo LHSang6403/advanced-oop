@@ -1,5 +1,7 @@
 "use strict";
 
+//const { MinLengthDecorator } = require('nodejs-validator-framework');
+
 var ValidationFramework = require('./Validator/ValidationFramework').ValidationFramework;
 var RequiredFieldRule = require('./Rule/ValidationRule/RequiredFieldRule').RequiredFieldRule;
 var RegexValidationRule = require('./Rule/ValidationRule/RegexValidationRule').RegexValidationRule;
@@ -12,6 +14,7 @@ var DOMSubscriber = require('./Observer/DOMSubscriber').DOMSubscriber;
 var ValidationObserver = require('./Observer/ValidationObserver').ValidationObserver;
 var isStringValidationRule = require('./Rule/ValidationRule/isStringValidationRule').IsStringValidation;
 var CustomValidationRule = require('./Rule/ValidationRule/CustomValidationRule').CustomValidationRule;
+var MinLengthDecorator = require('./Rule/Decorator/MinLengthDecorator').MinLengthDecorator;
 var framework = ValidationFramework.getInstance();
 var usernameValidation = new CompositeValidationRule();
 usernameValidation.addRule(new RequiredFieldRule("Username is required"));
@@ -48,3 +51,5 @@ if (!result.isSuccess()) {
 } else {
   console.log("Validation succeeded!");
 }
+var minLengthDecorator = new MinLengthDecorator(new RequiredFieldRule("Username is required"), 5, "Username must be at least 5 characters long");
+console.log(minLengthDecorator.validate("1234"));

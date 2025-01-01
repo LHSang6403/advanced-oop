@@ -20,6 +20,7 @@ var ValidationRuleDecorator = /*#__PURE__*/function (_ValidationRule) {
     _classCallCheck(this, ValidationRuleDecorator);
     _this = _callSuper(this, ValidationRuleDecorator, [message]);
     _this.rule = rule;
+    _this.message = message;
     return _this;
   }
   _inherits(ValidationRuleDecorator, _ValidationRule);
@@ -32,6 +33,11 @@ var ValidationRuleDecorator = /*#__PURE__*/function (_ValidationRule) {
     key: "additionalValidation",
     value: function additionalValidation(value) {
       throw new Error("additionalValidation() must be implemented");
+    }
+  }, {
+    key: "getMessage",
+    value: function getMessage() {
+      return this.rule.getMessage();
     }
   }]);
 }(ValidationRule);
